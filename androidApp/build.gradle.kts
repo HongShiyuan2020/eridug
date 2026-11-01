@@ -12,9 +12,8 @@ kotlin {
 }
 dependencies {
     implementation(project(":sharedUI"))
-
     implementation(libs.androidx.activity.compose)
-
+    implementation(libs.koin.android)
     implementation(libs.compose.uiToolingPreview)
     debugImplementation(libs.compose.uiTooling)
 }
@@ -38,6 +37,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("debug")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -50,5 +50,11 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
+    }
+    signingConfigs {
+        getByName("debug") {
+
+        }
     }
 }
