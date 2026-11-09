@@ -60,8 +60,6 @@ class PluginManager {
 
         val record = pluginRepository.getPlugin(pluginInfo.name)
 
-        Napier.i(record.toString())
-
         if (record == null) {
             return pluginRepository.addPlugin(entity)
         } else {
@@ -71,7 +69,7 @@ class PluginManager {
         }
     }
 
-    suspend fun getPlugin(name: String): Plugin {
+    suspend fun getPlugin(name: String): Plugin? {
         return if (plugins.containsKey(name)) {
             plugins[name]!!
         } else {
@@ -99,8 +97,16 @@ class PluginManager {
         return plugin
     }
 
-    suspend fun register(plugin: Plugin) {
+    private suspend fun register(plugin: Plugin) {
         plugins[plugin.name] = plugin
         plugin.initialize(PluginContext(getPlatform().name))
+    }
+
+    suspend fun listPlugins(): List<PluginEntity> {
+        return pluginRepository.listAll()
+    }
+
+    suspend fun removePlugin(pluginName: String) {
+        pluginRepository.delPlugin(pluginName)
     }
 }

@@ -14,10 +14,14 @@ interface PluginDao {
     suspend fun insert(plugin: PluginEntity): Long
     @Query("DELETE FROM plugins WHERE id = :pluginId")
     suspend fun delete(pluginId: Long): Int
+    @Query("DELETE FROM plugins WHERE name = :name")
+    suspend fun deleteByName(name: String): Int
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun update(plugin: PluginEntity): Int
     @Query("SELECT * FROM plugins WHERE id = :pluginId")
     suspend fun getPluginById(pluginId: Long): PluginEntity?
     @Query("SELECT * FROM plugins WHERE name = :name")
     suspend fun getPluginByName(name: String): PluginEntity?
+    @Query("SELECT * FROM plugins")
+    suspend fun listAll(): List<PluginEntity>
 }

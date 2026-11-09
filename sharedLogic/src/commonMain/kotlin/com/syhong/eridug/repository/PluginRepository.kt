@@ -13,8 +13,8 @@ class PluginRepository(
         return pluginDao.insert(plugin)
     }
 
-    suspend fun delPlugin(pluginId: Long) : Int {
-        return pluginDao.delete(pluginId)
+    suspend fun delPlugin(name: String) : Int {
+        return pluginDao.deleteByName(name)
     }
 
     suspend fun updatePlugin(plugin: PluginEntity): Int {
@@ -24,5 +24,9 @@ class PluginRepository(
     suspend fun getPlugin(name: String): PluginEntity? {
         val plugin = pluginDao.getPluginByName(name)
         return plugin
+    }
+
+    suspend fun listAll(): List<PluginEntity> {
+        return pluginDao.listAll()
     }
 }

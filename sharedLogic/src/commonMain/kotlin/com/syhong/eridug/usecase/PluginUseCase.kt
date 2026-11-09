@@ -11,11 +11,11 @@ class PluginUseCase(
         return pluginManager.addOrUpdatePlugin(type, code)
     }
 
-    suspend fun uninstallPlugin(pluginId: Plugin) {
-
+    suspend fun uninstallPlugin(pluginName: String) {
+        return pluginManager.removePlugin(pluginName)
     }
 
-    suspend fun updatePlugin(plugin: Plugin) {
-
+    suspend fun listPlugins() : List<PluginEntity> {
+        return pluginManager.listPlugins()
     }
 }

@@ -10,7 +10,7 @@ class HealthCheckUseCase(
 
 
     suspend fun pluginHealthCheck() {
-        val healthCheckPlugin : HealthCheckPlugin = pluginManager.getPlugin("plugin-test")
+        val healthCheckPlugin : HealthCheckPlugin = pluginManager.getPlugin("plugin-test")!!
         val res = healthCheckPlugin.health()
         Napier.d(res)
     }

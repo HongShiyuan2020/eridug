@@ -53,7 +53,7 @@ kotlin {
             api(libs.koin.core)
             implementation(libs.koin.annotations)
             api(libs.koin.compose)
-            implementation(libs.koin.compose.viewmodel)
+            api(libs.koin.compose.viewmodel)
 
             implementation(libs.ktor.client.core)
 
@@ -62,7 +62,7 @@ kotlin {
             implementation(libs.androidx.sqlite.bundled)
         }
         androidMain.dependencies {
-            implementation(libs.koin.android)
+            api(libs.koin.android)
             implementation(libs.kotlinx.coroutines.android)
             implementation(libs.ktor.client.okhttp)
         }
