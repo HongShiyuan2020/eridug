@@ -39,8 +39,8 @@ fun App() {
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-//            PluginPage()
-            EditPluginPage()
+            PluginPage()
+//            EditPluginPage()
         }
     }
 }
